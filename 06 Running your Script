@@ -1,0 +1,77 @@
+Now that you have got to this step the command to run the playbook is very simple.  Follow the next few steps.
+
+You might be currently in the following folder .. /playbooks/
+
+Navigate out of this folder:
+
+$ cd ..
+
+Now run:
+
+$ ansible-playbook -i inventory/hosts /playbooks/demo_setup.yml
+
+If all goes well it will pause for a few seconds and you should then see the follwoing results displayed on your screen.
+
+[admin@ansible ansible-aws]$ ansible-playbook -i inventory/hosts playbooks/demo_setup.yml
+
+PLAY [My Demo EC2 for AWS] *********************************************************************************************************************************************************************************
+
+TASK [Create an Instance using RHEL7] **********************************************************************************************************************************************************************
+changed: [localhost]
+
+TASK [Print all EC2 Variables] ******************************************************************************************************************************
+ok: [localhost] => {
+    "ec2": {
+        "changed": true, 
+        "instance_ids": [
+            "[OMITTED]"
+        ], 
+        "instances": [
+            {
+                "ami_launch_index": "0", 
+                "architecture": "x86_64", 
+                "block_device_mapping": {
+                    "/dev/sda1": {
+                        "delete_on_termination": true, 
+                        "status": "attached", 
+                        "volume_id": "vol-0e910d5289519c402"
+                    }
+                }, 
+                "dns_name": "ec2-[OMITTED].us-west-1.compute.amazonaws.com", 
+                "ebs_optimized": false, 
+                "groups": {
+                    "sg-63a25505": "default"
+                }, 
+                "hypervisor": "xen", 
+                "id": "[OMITTED]", 
+                "image_id": "ami-e69ebc86", 
+                "instance_type": "t2.micro", 
+                "kernel": null, 
+                "key_name": "id_rsa", 
+                "launch_time": "2017-07-16T11:25:57.000Z", 
+                "placement": "us-west-1b", 
+                "private_dns_name": "ip-[OMITTED].us-west-1.compute.internal", 
+                "private_ip": "[OMITTED]", 
+                "public_dns_name": "ec2-5[OMITTED].us-west-1.compute.amazonaws.com", 
+                "public_ip": "[OMITTED]", 
+                "ramdisk": null, 
+                "region": "us-west-1", 
+                "root_device_name": "/dev/sda1", 
+                "root_device_type": "ebs", 
+                "state": "running", 
+                "state_code": 16, 
+                "tags": {}, 
+                "tenancy": "default", 
+                "virtualization_type": "hvm"
+            }
+        ], 
+        "tagged_instances": []
+    }
+}
+
+PLAY RECAP ******************************************************************************************************************************
+localhost                  : ok=2    changed=1    unreachable=0    failed=0
+
+If you see the above then it was complete. you can now go back to your AWS account > EC2 dashboard and you will see that you have 1 instance running.
+
+Well Done, you have just used Ansible to push out and create a server in the cloud.  Now go have a drink.  This only took me 18hrs to figure out lol
