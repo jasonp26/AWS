@@ -1,2 +1,2 @@
 # AWS
-I am using this to document my progress in using Ansible to push instances out to AWS.
+This short guide lists the steps to create a single instance on the AWS using Ansible from a Centos7 server.
