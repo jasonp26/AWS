@@ -1,2 +1,52 @@
 Step Three :  Create an SSH KeyPair between your AWS environment and your Linux Server
 
+This is how I created the KeyPairs
+
+** Linux Server **
+
+Run this command:
+
+$ ssh-keygen
+
+You will be asked where you wish to save your id_rsa file, i would just press enter here and leave it in the default location
+Just step through the short wizard process and ensure you note down your passphrase/password details.
+
+Once complete you will have the following files in the directory
+
+$ /home/username/.ssh/
+
+With these files:
+
+id_rsa
+id_rsa.pub
+
+Copy that id_rsa.pub file to a location that you will need later for the AWS section
+
+NOTE: I had to install VSFTPD on my linux server to allow me to FTP it off the server and onto my Macbook.  You can do this all on the Linux server if you are using the GUI.
+
+** AWS Section **
+
+Log into your console in AWS
+
+Navigate to your IAM (Identity and Access Management) section
+
+Click on "Add User"
+Type in a username
+in the AWS access type section tick the "Programmatic access" option
+Click Next permissions (at the bottom of the screen)
+
+Add the user to a group or create one.
+Give this user administrator access
+Click Next Review Button
+Click the Create user Button
+
+Success, you must now take note of the "Access Key ID" and "Secret access key"
+You can also download the .csv file and store this securely.
+
+** Now you need to import your id_rsa.pub key **
+
+In AWS goto your EC2 dashboard
+Scroll down the menu on the left untill you see "Key Pairs", click that
+Click on "Import Key Pair" and select your "id_rsa.pub" file.
+
+This concludes this process.
