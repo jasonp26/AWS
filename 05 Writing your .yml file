@@ -1,0 +1,54 @@
+Step Four:    Begin writing your Ansible .yml file that will create your instance on the AWS environment
+
+I first created the following folder structure on my Linux Server inside the already created Ansible directory.
+
+$ /etc/ansible
+$     .. /development/ansible-aws/
+
+Under ansible-aws
+$ .. /inventory/
+$             .. hosts (create this file in inventory)
+$ .. /playbooks/
+$             .. demo_setup.yml (create this file in playbooks)
+
+***************************************************************************************
+** Contents of the HOSTS File **
+***************************************************************************************
+
+[local]
+localhost
+
+***************************************************************************************
+** Contents of my demo_setup.yml file **
+***************************************************************************************
+# Demo Setup.yml
+
+- name: My Demo EC2 for AWS
+  hosts: localhost
+  connection: local
+  gather_facts: False
+  vars:
+    keypair: id_rsa
+    instance_type: t2.micro
+    ami_id: [insert your desired ami id here ]
+    region: [choose your region here i used us-west-1 for this example]
+  tasks:
+    - name: Create an Instance using RHEL7
+      ec2:
+         key_name: "{{ keypair }}"
+         group: default
+         instance_type: "{{ instance_type  }}"
+         image: "{{ ami_id }}"
+         wait: true
+         region: "{{ region }}"
+         aws_access_key: [insert your access key id here]
+         aws_secret_key: [insert your secret access key here]
+      register: ec2
+    - name: Print all EC2 Variables
+      debug: var=ec2
+
+***************************************************************************************
+
+NOTE: "{{ keypair}}" . This is a referencing the variable that was declared at the top of this yml file.  Look over this code carfeully and if you like watch the video on youtube that I have linked in my README file.
+
+Now that you have completed the above you are now going to run the file, Please NOTE I had a few errors along the way to get this running simply because it would not create the instance in the EU region so had to use a US one.
