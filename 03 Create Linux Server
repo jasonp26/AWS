@@ -1,0 +1,9 @@
+Step Two :    Create a Linux Server on your home lab in this example I used Centos7 (which is about 90% similar to RHEL6)
+
+
+It is very easy to build a linux server on an old PC.  However if your reading this then you will already have done so.  If not then you can obtain an linux iso from thr following places.
+
+Centos7:  http://www.centos.org
+Ubuntu:   http://www.ubuntu.com
+RHEL7:    http://www.redhat.com
+
