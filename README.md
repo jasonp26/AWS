@@ -3,6 +3,12 @@ This short guide lists the steps to create a single instance on the AWS using An
 
 I am including everything I read and watched to help me understand and complete this task.
 
+
+Install boto on your linux server.  I followed this process to complete
+
+https://gist.github.com/merevu/d384eeff87125ba0050a
+
+
 Links I used to complete this personal task:
 
 https://community.hortonworks.com/articles/86924/using-ansible-to-deploy-instances-on-aws.html
