@@ -1,0 +1,10 @@
+I had some difficulty in getting this to work and considering this is something I am teaching myself I am proud of the progress so far.
+
+I will document candidly the process I have taken to complete this.  Please refer to my Readme file for all the links i used to investigate on how to do this.
+
+Here are the Steps that I will be outlining.
+
+Step One :    Create an AWS account and sign up for the free 12 month access
+Step Two :    Create a Linux Server on your home lab in this example I used Centos7 (which is about 90% similar to RHEL6)
+Step Three :  Create an SSH KeyPair between your AWS environment and your Linux Server
+Step Four:    Begin writing your Ansible .yml file that will create your instance on the AWS environment
