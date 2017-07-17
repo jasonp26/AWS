@@ -1,0 +1,41 @@
+This is a demo deploy code for two Ubuntu instances with Tomcat8
+
+# Demo Setup.yml
+
+- name: My Demo EC2 for AWS
+  hosts: localhost
+  connection: local
+  gather_facts: False
+  vars:
+    keypair: id_rsa
+    instance_type: t2.micro
+    ami_id: ami-cc7066a8
+    region: eu-west-2
+  tasks:
+    - name: Create an Instance on AWS
+      ec2:
+         key_name: "{{ keypair }}"
+         group: default
+         instance_type: "{{ instance_type  }}"
+         image: "{{ ami_id }}"
+         wait: true
+         region: "{{ region }}"
+         aws_access_key: [access key]
+         aws_secret_key: [secret key]
+         exact_count: 2
+         count_tag:
+             name: aws-demo
+         instance_tags:
+             name: aws-demo
+      register: ec2
+    - name: Install Tomcat8
+      become: true
+      become_method: sudo
+      yum: pkg=tomcat state=latest
+    - name: Restart Service
+      become: true
+      become_method: sudo
+      service: name=tomcat state=started
+    - name: Print all EC2 Variables
+      debug: var=ec2
+~                    
