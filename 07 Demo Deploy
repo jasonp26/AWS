@@ -18,8 +18,8 @@
          image: "{{ ami_id }}"
          wait: true
          region: "{{ region }}"
-         aws_access_key: AKIAIZIDWXRXR6UU46CA
-         aws_secret_key: 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
+         aws_access_key: []
+         aws_secret_key: []
          exact_count: 2
          count_tag:
              name: aws-demo
